@@ -1,0 +1,97 @@
+<div class="text-right mt-1">
+  <button class="btn btn-primary" data-toggle="modal" datatarget="#cartModal">Cart
+    ({{ totalItems() }})
+  </button>
+</div>
+<!--bootstrap 5 Modal default start-->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cartModalLabel">Cart</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0">
+        <table class="table table-bordered mb-0">
+          <tr *ngFor="let items of cartItems; let i=index">
+            <td>{{ items.title }}</td>
+            <td style="width:120px">QTY:
+              <input [(ngModel)]="items.qtys" class="form-control input-qty" type="number" min="1">
+            </td>
+            <td class="text-right">{{ items.price | currency: 'VND' }}</td>
+            <td>
+              <button (click)="removeItem(i)"><span class="fa fa-trash"></span></button>
+            </td>
+          </tr>
+          <tr *ngIf="cartItems.length == 0">
+            <td colspan="4" class="text-center">Cart is empty</td>
+          </tr>
+          <tr *ngIf="cartItems.length > 0">
+            <td></td>
+            <td class="text-right">Cart Total</td>
+            <td class="text-right  text-danger font-weight-bold">{{ Total() | currency: 'VND' }}</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" arialabelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title " id="myModalLabel">Cart</h4>
+        <button type="button" class="close" data-dismiss="modal" arialabel="Close">
+          <span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body p-0">
+        <table class="table table-bordered mb-0">
+          <tr *ngFor="let items of cartItems; let i=index">
+            <td>{{ items.title }}</td>
+            <td style="width:120px">QTY:
+              <input [(ngModel)]="items.qtys" class="form-control
+input-qty" type="number" min="1">
+            </td>
+            <td class="text-right">{{
+                items.price | currency:
+                  "VND"
+              }}
+            </td>
+            <td>
+              <button (click)="removeItem(i)"><span class="fa fatrash"></span></button>
+            </td>
+          </tr>
+          <tr *ngIf="cartItems.length == 0">
+            <td colspan="4" class="text-center">Cart is empty</td>
+          </tr>
+          <tr *ngIf="cartItems.length > 0">
+            <td></td>
+            <td class="text-right">Cart Total</td>
+            <td class="text-right text-danger font-weightbold">{{ Total()| currency:"VND" }}</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" datadismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-6 col-sm-3 text-center" *ngFor="let item of products">
+      <img [src]="item.image" alt="">
+      <h5>{{ item.title }}</h5>
+      <h6 class="text-danger">{{ item.price | currency:'VND' }}</h6>
+      <p class="text-center"><input [(ngModel)]="item.qty" type="number"
+                                    class="form-control" placeholder="Qty"
+                                    min="1"/></p>
+      <button (click)="addToCart(item)" class="btn btn-sm btn-primary">Add
+        to Cart
+      </button>
+    </div>
+  </div>
+</div>
