@@ -1,13 +1,12 @@
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from "@angular/forms";
-import {RouterLink, RouterOutlet} from "@angular/router";
 import {itemModel} from "../../utils/itemModel";
 
 @Component({
   selector: 'app-bai1',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, RouterOutlet],
+  imports: [CommonModule, FormsModule ],
   templateUrl: './bai1.component.html',
   styleUrls: ['./bai1.component.css']
 })
