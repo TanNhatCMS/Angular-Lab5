@@ -23,32 +23,7 @@ body {
   position: relative;
   margin: 0 auto
 }
-.btn {
-  padding: 6px 6px;
-  border: none;
-  border-radius: 4px;
-  transition: all 0.25s linear;
-  color: #fff;
-}
-.btn-success {
-  background-color: #28a745;
-}
-.btn-secondary {
-  background-color: #6c757d;
-}
-.btn-danger {
-  background-color: #d2455b;
-}
 
-.btn-danger:hover {
-  background-color: #d2455ada;
-}
-.btn-secondary:hover {
-  background-color: #5a6268;
-}
-.btn-success:hover {
-  background-color: #218838;
-}
 a,
 button {
   cursor: pointer;
