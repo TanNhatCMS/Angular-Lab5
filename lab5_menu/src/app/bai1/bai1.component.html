@@ -1,0 +1,121 @@
+
+<!-- Modal -->
+<!-- Modal trigger button -->
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="#" class="nav-link px-2 text-secondary">Trang chủ</a></li>
+        <li><a href="#" class="nav-link px-2 text-white">Sản phẩm</a></li>
+        <li><a href="#" class="nav-link px-2 text-white">Liên hệ</a></li>
+        <li><a href="#" class="nav-link px-2 text-white">Góp ý</a></li>
+        <li><a href="#" class="nav-link px-2 text-white">Hỏi đáp</a></li>
+      </ul>
+
+      <div class="mt-1" style="text-align: right;">
+        <button class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#modalId">Cart
+          ({{ totalItems() }})
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- Modal Body -->
+<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+<div
+  class="modal fade"
+  id="modalId"
+  tabindex="-1"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+
+  role="dialog"
+  aria-labelledby="modalTitleId"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-ms"
+    role="document"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">
+          Cart
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body p-0">
+        <table class="table table-bordered mb-0">
+          <tr *ngFor="let items of cartItems; let i=index">
+            <td>{{ items.title }}</td>
+            <td style="width:120px">QTY:
+              <input [(ngModel)]="items.qty" class="form-control input-qty" type="number" min="1">
+            </td>
+            <td class="text-right">{{
+                items.price | currency:
+                  "VND"
+              }}
+            </td>
+            <td>
+              <button (click)="removeItem(i)"><span class="fa fatrash"></span></button>
+            </td>
+          </tr>
+          <tr *ngIf="cartItems.length == 0">
+            <td colspan="4" class="text-center">Cart is empty</td>
+          </tr>
+          <tr *ngIf="cartItems.length > 0">
+            <td></td>
+            <td class="text-right">Cart Total</td>
+            <td class="text-right text-danger font-weightbold">{{ Total()| currency:"VND" }}</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Optional: Place to the bottom of scripts -->
+<script>
+  const myModal = new bootstrap.Modal(
+    document.getElementById("modalId"),
+    options,
+  );
+</script>
+
+<!-- Modal -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 col-sm-3 text-center" *ngFor="let item of products">
+      <img [src]="item.image" alt="">
+      <h5>{{ item.title }}</h5>
+      <h6 class="text-danger">{{ item.price | currency:'VND' }}</h6>
+      <p class="text-center"><input [(ngModel)]="item.qty" type="number"
+                                    class="form-control" placeholder="Qty"
+                                    min="1"/></p>
+      <button (click)="addToCart(item)" class="btn btn-sm btn-primary">Add
+        to Cart
+      </button>
+    </div>
+  </div>
+</div>
