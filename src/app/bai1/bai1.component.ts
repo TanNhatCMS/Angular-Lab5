@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from "@angular/forms";
 import {RouterLink, RouterOutlet} from "@angular/router";
+import {itemModel} from "../../utils/itemModel";
 
 @Component({
   selector: 'app-bai1',
@@ -10,8 +11,11 @@ import {RouterLink, RouterOutlet} from "@angular/router";
   templateUrl: './bai1.component.html',
   styleUrls: ['./bai1.component.css']
 })
+
+
 export class Bai1Component {
-  products: any[] = [
+
+  products: itemModel[] = [
     {
       id: 1, title: 'Macbook Pro', price: 25000000, qty: 1, image:
         './assets/images/1.jpg'
@@ -29,7 +33,7 @@ export class Bai1Component {
         './assets/images/4.jpg'
     },
   ]
-  cartItems: any[] = []
+  cartItems: itemModel[] = []
 
   addToCart(item: any) {
 // Add the item or increase qty
@@ -38,10 +42,10 @@ export class Bai1Component {
     if (!isItemInCart) {
       this.cartItems.push({
         id: item.id, title: item.title,
-        price: item.price, qtys: item.qty, image: item.image
+        price: item.price, qty: item.qty, image: item.image
       })
     } else {
-      itemInCart[0].qtys += item.qty;
+      itemInCart[0].qty += item.qty;
     }
     item.qty = 1;
     console.log(this.cartItems)
@@ -51,12 +55,16 @@ export class Bai1Component {
   removeItem(index: any) {
     this.cartItems.splice(index, 1);
   }
-  Total(){
+
+  Total() {
     let sum = 0;
-    this.cartItems.forEach(item => sum += item.qtys * item.price)
+    this.cartItems.forEach(item => sum += item.qty * item.price)
+    return sum
   }
-  totalItems(){
+
+  totalItems() {
     let sum = 0;
-    this.cartItems.forEach(item => sum += item.qtys)
+    this.cartItems.forEach(item => sum += item.qty)
+    return sum
   }
 }

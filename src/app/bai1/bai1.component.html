@@ -1,58 +1,48 @@
-<div class="text-right mt-1">
-  <button class="btn btn-primary" data-toggle="modal" datatarget="#cartModal">Cart
+
+<!-- Modal -->
+<!-- Modal trigger button -->
+
+<div class="mt-1" style="text-align: right;">
+  <button class="btn btn-primary" data-bs-toggle="modal"
+          data-bs-target="#modalId">Cart
     ({{ totalItems() }})
   </button>
 </div>
-<!--bootstrap 5 Modal default start-->
-<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<!-- Modal Body -->
+<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+<div
+  class="modal fade"
+  id="modalId"
+  tabindex="-1"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+
+  role="dialog"
+  aria-labelledby="modalTitleId"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-ms"
+    role="document"
+  >
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="cartModalLabel">Cart</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="modalTitleId">
+          Cart
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body p-0">
         <table class="table table-bordered mb-0">
           <tr *ngFor="let items of cartItems; let i=index">
             <td>{{ items.title }}</td>
             <td style="width:120px">QTY:
-              <input [(ngModel)]="items.qtys" class="form-control input-qty" type="number" min="1">
-            </td>
-            <td class="text-right">{{ items.price | currency: 'VND' }}</td>
-            <td>
-              <button (click)="removeItem(i)"><span class="fa fa-trash"></span></button>
-            </td>
-          </tr>
-          <tr *ngIf="cartItems.length == 0">
-            <td colspan="4" class="text-center">Cart is empty</td>
-          </tr>
-          <tr *ngIf="cartItems.length > 0">
-            <td></td>
-            <td class="text-right">Cart Total</td>
-            <td class="text-right  text-danger font-weight-bold">{{ Total() | currency: 'VND' }}</td>
-            <td></td>
-          </tr>
-        </table>
-      </div>
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" arialabelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title " id="myModalLabel">Cart</h4>
-        <button type="button" class="close" data-dismiss="modal" arialabel="Close">
-          <span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="modal-body p-0">
-        <table class="table table-bordered mb-0">
-          <tr *ngFor="let items of cartItems; let i=index">
-            <td>{{ items.title }}</td>
-            <td style="width:120px">QTY:
-              <input [(ngModel)]="items.qtys" class="form-control
-input-qty" type="number" min="1">
+              <input [(ngModel)]="items.qty" class="form-control input-qty" type="number" min="1">
             </td>
             <td class="text-right">{{
                 items.price | currency:
@@ -75,11 +65,29 @@ input-qty" type="number" min="1">
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" datadismiss="modal">Close</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+
       </div>
     </div>
   </div>
 </div>
+
+<!-- Optional: Place to the bottom of scripts -->
+<script>
+  const myModal = new bootstrap.Modal(
+    document.getElementById("modalId"),
+    options,
+  );
+</script>
+
+<!-- Modal -->
+
 <div class="container">
   <div class="row">
     <div class="col-6 col-sm-3 text-center" *ngFor="let item of products">
