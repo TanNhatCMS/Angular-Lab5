@@ -4,7 +4,6 @@ import {Title} from "@angular/platform-browser";
 import {HomeComponent} from "./home/home.component";
 import {Bai1Component} from "./bai1/bai1.component";
 import {Bai2Component} from "./bai2/bai2.component";
-import {Bai3Component} from "./bai3/bai3.component";
 
 
 
@@ -13,7 +12,6 @@ const routes: Routes = [
   {path: 'index.html', title: 'Trang chủ', component: HomeComponent},
   {path: 'Lab5_1.html', title: 'Bài 1', component: Bai1Component},
   {path: 'Lab5_2.html', title: 'Bài 2', component: Bai2Component},
-  {path: 'Lab5_3.html', title: 'Bài 3', component: Bai3Component},
   {path: '**', redirectTo: ''}
 ];
 
