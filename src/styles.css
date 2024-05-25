@@ -1,0 +1,149 @@
+:root {
+  --primary-color: #2a3946;
+  --secondary-color: #d2455b;
+  --border-color: #c0ccd7;
+  font-family: Arial, sans-serif;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+}
+
+::placeholder {
+  font-size: 16px;
+  font-weight: 600;
+
+}
+
+body {
+  background-color: #f0f0f0;
+  padding: 0;
+  position: relative;
+  margin: 0 auto
+}
+.btn {
+  padding: 6px 6px;
+  border: none;
+  border-radius: 4px;
+  transition: all 0.25s linear;
+  color: #fff;
+}
+.btn-success {
+  background-color: #28a745;
+}
+.btn-secondary {
+  background-color: #6c757d;
+}
+.btn-danger {
+  background-color: #d2455b;
+}
+
+.btn-danger:hover {
+  background-color: #d2455ada;
+}
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+.btn-success:hover {
+  background-color: #218838;
+}
+a,
+button {
+  cursor: pointer;
+  text-decoration: none;
+}
+li {
+  padding: 6px 24px;
+}
+.logo {
+  color: var(--primary-color);
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 32px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #e2e8ec;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #2a3946;
+}
+
+.header {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 24px;
+  border-bottom: 2px solid #c0ccd7;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-left: .25em
+}
+
+header span {
+  color: var(--hightlight)
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 2em 1em 1em;
+  min-width: 40vw;
+  height: 10%
+}
+
+footer img {
+  max-width: 1.25em;
+  margin: 0 .25em;
+  fill: var(--hightlight)
+}
+
+.copyright {
+  display: flex;
+  align-items: center;
+  max-width: fit-content
+}
+
+.copyright a {
+  font-weight: 400;
+  margin-left: .5em
+}
+/* Style for main container */
+.container {
+  justify-content: space-around;
+  gap: 20px;
+}
+
+/* Style for each section */
+.section-title {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.section-title h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #333;
+}

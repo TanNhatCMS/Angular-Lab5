@@ -1,0 +1,10 @@
+<section class="section-title">
+  <h2>Bài tập {{ title }}</h2>
+  <div class="section-links">
+      <ul class="list-group">
+        <li *ngFor="let menu of menus" class="list-group-item">
+          <a class="btn btn-success" href="#" routerLink="{{ menu.url }}" routerLinkActive="active" ariaCurrentWhenActive="page">{{ menu.name }}</a>
+        </li>
+      </ul>
+  </div>
+</section>
